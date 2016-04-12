@@ -531,7 +531,7 @@ void clean() {
 	glDeleteTextures(10, textures);
 }
 
-extern "C" int main(int argc, char **argv) {
+int main(int argc, char **argv) {
 /*
     
 	std::string path = argv[0];
