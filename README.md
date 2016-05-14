@@ -23,18 +23,44 @@ you have to rotate the grid x and y axis.
 
 
 Controls:
+
+
 Left Arrow - move left 
+
+
 Right Arrow - move right 
+
+
 Down Arrow - move down 
+
+
 Up Arrow - move inwards depth wise 
+
+
 'a' key - to shift blocks
+
+
 'e' key - to restore rotation to home
+
+
 's' key: rotate +x axis
+
+
 'd' key: rotate -x axis
+
+
 'z' key: rotate +y axis
+
+
 'x' key: rotate -y axis
+
+
 Escape key to quit any time
+
+
 Written in C++ using OpenGL.
+
+
 
 
 
