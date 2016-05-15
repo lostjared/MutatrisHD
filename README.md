@@ -21,6 +21,8 @@ is When a block is not supported (no block beneath it) it moves down until there
 below or the bottom of the grid. It may be tricky to figure out the controls at first, but
 you have to rotate the grid x and y axis.
 
+Watch video on how to compile: https://youtu.be/6pfXzNvGXVo
+
 
 Controls:
 
