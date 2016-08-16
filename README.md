@@ -1,5 +1,8 @@
 # MutatrisHD
 
+![ScreenShot](http://lostsidedead.biz/osx/mut3d.png "screenshot")
+
+
 Requires SDL2 and GLEW use the configure script
 after you run autogen.sh like this
 
