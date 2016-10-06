@@ -5,6 +5,7 @@ AC_PREREQ([2.64])
 AC_INIT(MutatrisHD, 1.5, jared@lostsidedead.com)
 
 AC_CONFIG_HEADERS(config.h)
+AC_CANONICAL_SYSTEM
 
 AM_INIT_AUTOMAKE
 # Checks for programs.
@@ -120,36 +121,31 @@ AC_CHECK_TYPES([ptrdiff_t])
 AC_FUNC_MALLOC
 AC_CHECK_FUNCS([memset])
 
+
+LIBGL_LIB=""
+
+
+case "${host}" in
+*darwin*|*apple*)
+AC_DEFINE_UNQUOTED(DARWIN, 1, [darwin])
+LIBGL_LIB=" -framework OpenGL"
+;;
+
+x86_64*linux*)
+LIBGL_LIB=" -lGL -lGLU"
+;;
+esac
+
 AC_SUBST(LIBSDL_CFLAGS)
 AC_SUBST(LIBSDL_LIBS)
 AC_SUBST(LIBGLEW_GLEWLIB)
-
-#if test -e ${prefix}/lib/libpng.a; then
-#echo "found libpng at: ${prefix}/lib"
-#else
-#AC_MSG_ERROR([Could not find libpng])
-#fi
-
-#if test -e ${prefix}/lib/libz.a; then
-#echo "found libz at: ${prefix}/lib"
-#else
-#AC_MSG_ERROR([could not find zlib])
-#fi
-
-#if test -e ${prefix}/lib/libglew.a; then
-#echo "found libglew.a in ${prefix}/lib"
-#GLEWLIB= "${prefix}/lib/libglew.a"
-#echo "$GLEWLIB"
-#else
-#AC_MSG_ERROR([could not find libglew.a in ${prefix}])
-#GLEWLIB="`pkg-config 'glew' --libs`"
-#fi 
-
+AC_SUBST(LIBGL_LIB)
 
 
 echo "SDL2 CFLAGS found: $LIBSDL_CFLAGS"
 echo "SDL2 LDFLAGS $LIBSDL_LIBS"
 echo "GLEW LDFLAGS $LIBGLEW_GLEWLIB"
+echo "GL LDFLAGS: $LIBGL_LIB"
 
 
 
