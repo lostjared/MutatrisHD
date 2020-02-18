@@ -8,8 +8,8 @@
 #include"cmx_font.h"
 #include"fixedsys.h"
 
-#define WIDTH 1280
-#define HEIGHT 720
+#define WIDTH 1920
+#define HEIGHT 1080
 
 
 enum { INTRO, GAME, GAME_OVER };
