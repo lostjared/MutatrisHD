@@ -3,7 +3,9 @@
 
 
 #include"glew.h"
+#include<cmath>
 
+void new_gluPerspective( GLdouble fovY, GLdouble aspect, GLdouble zNear, GLdouble zFar );
 
 
 	namespace MX_i {

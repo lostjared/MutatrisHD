@@ -237,7 +237,7 @@ void renderGame() {
 	glEnable(GL_DEPTH_TEST);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45.0f, float(width/height), 0.1f, 300.0f);
+	new_gluPerspective(45.0f, float(width/height), 0.1f, 300.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
   	gluLookAt(0, 0, 120, 0, 0, 0, 0, 1, 0);
@@ -356,7 +356,7 @@ void renderIntro() {
 	glEnable(GL_DEPTH_TEST);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45.0f, (float)(width/height), 0.1f, 300.0f);
+	new_gluPerspective(45.0f, (float)(width/height), 0.1f, 300.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -403,7 +403,7 @@ void renderGameOver() {
 	glEnable(GL_TEXTURE_2D);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45.0f, (width/height), 0.1f, 300.0f);
+	new_gluPerspective(45.0f, (width/height), 0.1f, 300.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
@@ -452,7 +452,7 @@ void resize(int w, int h) {
 	glViewport(0, 0, w, h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45.0f, float(w / h), 0.1f, 300.0f);
+	new_gluPerspective(45.0f, float(w / h), 0.1f, 300.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }
