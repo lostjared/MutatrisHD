@@ -112,7 +112,7 @@ namespace MX_i {
 		    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 6);
 		    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 5);
 		    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
-
+            SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 		    
             window = SDL_CreateWindow("Mutatris HD", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, view_w, view_h, SDL_WINDOW_OPENGL);
             
