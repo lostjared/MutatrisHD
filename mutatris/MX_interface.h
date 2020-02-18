@@ -6,9 +6,9 @@
 #include<cmath>
 
 void new_gluPerspective( GLdouble fovY, GLdouble aspect, GLdouble zNear, GLdouble zFar );
+void new_gluOrtho2D(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top);
 
-
-	namespace MX_i {
+namespace MX_i {
 		
         extern int FPS;
         extern float dt;

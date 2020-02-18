@@ -221,7 +221,7 @@ GLfloat frontTexture[] = {
 void renderGame() {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(-1.0f, 1.0f, -1.0f, 1.0f);
+	new_gluOrtho2D(-1.0f, 1.0f, -1.0f, 1.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	// draw in 2D
@@ -341,7 +341,7 @@ void renderIntro() {
 	glLoadIdentity();
 	glDisable(GL_DEPTH_TEST);
 	//gluOrtho2D(0, 640, 0, 480);
-	gluOrtho2D(-1.0f, 1.0f, -1.0f, 1.0f);
+	new_gluOrtho2D(-1.0f, 1.0f, -1.0f, 1.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glEnable(GL_TEXTURE_2D);
@@ -390,7 +390,7 @@ void renderGameOver() {
 	glDisable(GL_TEXTURE_2D);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(0, 640, 0, 480);
+	new_gluOrtho2D(0, 640, 0, 480);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glRasterPos2f(5, 480);

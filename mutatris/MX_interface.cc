@@ -12,6 +12,11 @@ void new_gluPerspective( GLdouble fovY, GLdouble aspect, GLdouble zNear, GLdoubl
     glFrustum( -fW, fW, -fH, fH, zNear, zFar );
 }
 
+void new_gluOrtho2D(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top)
+{
+    glOrtho(left, right, bottom, top, -1, 1);
+}
+
 namespace MX_i {
 
         SDL_Joystick *stick;
