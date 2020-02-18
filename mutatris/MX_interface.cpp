@@ -131,11 +131,9 @@ namespace MX_i {
         void toggleFullScreen() {
             static int offset = 0;
             if(offset == 0) {
+                SDL_SetWindowPosition(window, 0, 0);
                 SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
                 offset = 1;
-            } else {
-                offset = 0;
-                SDL_SetWindowFullscreen(window, 0);
             }
         }
 
