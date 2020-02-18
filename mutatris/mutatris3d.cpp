@@ -404,8 +404,8 @@ static float intro_zPos = 0, intro_yRot = 0;
 
 void renderIntro() {
     
-    glEnable (GL_BLEND);
-    glBlendFunc (GL_SRC_ALPHA, GL_SRC_ALPHA);
+   //glEnable (GL_BLEND);
+   // glBlendFunc (GL_SRC_ALPHA, GL_SRC_ALPHA);
   
    
     
