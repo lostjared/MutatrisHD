@@ -7,6 +7,7 @@
 
 void new_gluPerspective( GLdouble fovY, GLdouble aspect, GLdouble zNear, GLdouble zFar );
 void new_gluOrtho2D(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top);
+void new_gluLookAt(GLfloat eyex, GLfloat eyey, GLfloat eyez,GLfloat centerx, GLfloat centery,GLfloat centerz,GLfloat upx, GLfloat upy, GLfloat upz);
 
 namespace MX_i {
 		

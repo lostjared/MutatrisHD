@@ -240,7 +240,7 @@ void renderGame() {
 	new_gluPerspective(45.0f, float(width/height), 0.1f, 300.0f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-  	gluLookAt(0, 0, 120, 0, 0, 0, 0, 1, 0);
+  	new_gluLookAt(0, 0, 120, 0, 0, 0, 0, 1, 0);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glVertexPointer(3, GL_FLOAT, 0, vertices);
