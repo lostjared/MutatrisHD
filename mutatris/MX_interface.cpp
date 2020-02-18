@@ -293,6 +293,9 @@ namespace MX_i {
                     case SDL_MOUSEBUTTONUP:
                             //mouseUp(e.button.x, e.button.y, e.button.state);
                             break;
+                        case SDL_MOUSEWHEEL:
+                            movementScroll(e.wheel.y);
+                            break;
                     }
 					
 				}

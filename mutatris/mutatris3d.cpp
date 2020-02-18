@@ -263,6 +263,13 @@ void movementDown(int x, int y, int state) {
     y1x = y;
 }
 
+void movementScroll(int y) {
+    if(y > 0) {
+        mutatris.moveInward();
+    } else if(y < 0) {
+        mutatris.moveOutward();
+    }
+}
 
 
 GLfloat frontFace[] = {

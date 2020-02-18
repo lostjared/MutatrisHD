@@ -66,6 +66,7 @@ namespace mp
 		void moveRight();
 		void moveDown();
 		void moveInward();
+        void moveOutward();
 		void shiftColor();
 		void nextBlock();
 		void update();
