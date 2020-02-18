@@ -169,7 +169,7 @@ namespace MX_i {
                             break;
                         case SDL_JOYAXISMOTION: {
                           
-                            int numAxis = SDL_JoystickNumAxes(stick);
+                           // int numAxis = SDL_JoystickNumAxes(stick);
                             
                             if(e.jaxis.axis == 3) {
                                 if(e.jaxis.value < -3200) {

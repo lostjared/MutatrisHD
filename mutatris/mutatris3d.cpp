@@ -333,7 +333,7 @@ void renderGame() {
 	 for(i = 0; i < mutatris.GRID_W; i++) {
 		  for(z = 0; z < mutatris.GRID_H; z++) {
 			  for(d = 0; d < mutatris.GRID_Z; d++) {
-			  static float rotPos[mutatris.GRID_W][mutatris.GRID_H][mutatris.GRID_Z] = { 0 };
+                  static float rotPos[mutatris.GRID_W][mutatris.GRID_H][mutatris.GRID_Z] = { {{0, 0, 0}} };
 			  float blockPos = d*10.0f;
 			  float blockXPos =i*2.5f;
 			  float blockYPos = z*3.0;

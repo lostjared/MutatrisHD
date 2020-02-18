@@ -2,7 +2,7 @@
 #define __HEADER__H__
 
 
-#include"glew.h"
+#include<GL/glew.h>
 #include<cmath>
 
 void new_gluPerspective( GLdouble fovY, GLdouble aspect, GLdouble zNear, GLdouble zFar );
