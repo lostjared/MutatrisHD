@@ -280,11 +280,15 @@ namespace MX_i {
                             cursor_x = e.motion.x;
                             cursory = e.motion.y;
                             cursor = e.motion.state;
-                             if(cursor == 1)
+                             if(cursor & SDL_BUTTON_RMASK)
                                 mouseUp(e.motion.x, e.motion.y, e.motion.state);
+                             else if(cursor & SDL_BUTTON_LMASK)
+                                movementUp(e.motion.x, e.motion.y, e.motion.state);
+
                             break;
                     case SDL_MOUSEBUTTONDOWN:
                              mouseDown(e.button.x, e.button.y, e.button.state);
+                            movementDown(e.button.x, e.button.y, e.button.state);
                             break;
                     case SDL_MOUSEBUTTONUP:
                             //mouseUp(e.button.x, e.button.y, e.button.state);

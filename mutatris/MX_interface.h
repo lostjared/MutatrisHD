@@ -30,6 +30,8 @@ namespace MX_i {
 
 void mouseDown(int x, int y, int state);
 void mouseUp(int x, int y, int state);
+void movementUp(int x, int y, int state);
+void movementDown(int x, int y, int state);
 
 #endif
 

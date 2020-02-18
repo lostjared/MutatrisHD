@@ -231,6 +231,39 @@ void mouseUp(int x, int y, int state) {
     }
 }
 
+void movementUp(int x, int y, int state) {
+    x2 = x;
+    y2 = y;
+    if(x1 < x2 && abs(x1-x2) > 40) {
+        x1 = x;
+        y1x = y;
+        mutatris.moveRight();
+
+    }
+    else if(x1 > x2 && abs(x2-x1) > 40) {
+        mutatris.moveLeft();
+        x1 = x;
+        y1x = y;
+    }
+
+    if(y1x < y2 && abs(y1x-y2) > 40) {
+        x1 = x;
+        y1x = y;
+        mutatris.moveDown();
+    }
+    else if(y1x > y2 && abs(y2-y1x) > 40) {
+        mutatris.shiftColor();
+        x1 = x;
+        y1x = y;
+    }
+}
+
+void movementDown(int x, int y, int state) {
+    x1 = x;
+    y1x = y;
+}
+
+
 
 GLfloat frontFace[] = {
 		-1.0f, -1.0f, 1.0f, // front face
@@ -456,8 +489,6 @@ void renderGameOver() {
 		intro_zPos = intro_yRot = 0;
 		mutatris.newGame();
 	}
-
-
 }
 
 void render() {
