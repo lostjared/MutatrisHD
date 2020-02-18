@@ -13,6 +13,7 @@ namespace MX_i {
 		
         extern int FPS;
         extern float dt;
+        extern int cursor_x, cursory, cursor;
         
         void Init(int *argc, char **argv, int w, int h);
 		void SetCallbacks(void (*update)(), void (*idle)(), void (*resize)(int w, int h));
@@ -26,6 +27,9 @@ namespace MX_i {
 		enum Buttons { B_UP=0, B_DOWN, B_LEFT, B_RIGHT, B_1,B_2, B_3, B_4, B_5, B_6};
 		bool PollController(enum Buttons b);
 	}
+
+void mouseDown(int x, int y, int state);
+void mouseUp(int x, int y, int state);
 
 #endif
 

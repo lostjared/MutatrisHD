@@ -194,9 +194,42 @@ void idle() {
 	else if(MX_i::PollController(MX_i::B_4)) rot[1] += 0.1f * dt;
 	else if(MX_i::PollController(MX_i::B_5)) rot[1] -= 0.1f * dt;
 	else if(MX_i::PollController(MX_i::B_6)) { rot[0] = 0; rot[1] = 0; rot[2] = 0; }
+    
+    
 	MX_i::Redisplay();
 }
+static int x1, x2, y1x, y2;
 
+void mouseDown(int x, int y, int state) {
+    x1 = x;
+    y1x = y;
+}
+
+void mouseUp(int x, int y, int state) {
+    x2 = x;
+    y2 = y;
+    if(x1 < x2 && abs(x1-x2) > 10) {
+        rot[1] -= 0.1f * dt;
+        x1 = x;
+        y1x = y;
+    }
+    else if(x1 > x2 && abs(x2-x1) > 10) {
+        rot[1] += 0.1f * dt;
+        x1 = x;
+        y1x = y;
+    }
+
+    if(y1x < y2 && abs(y1x-y2) > 10) {
+        rot[0] -= 0.1f * dt;
+        x1 = x;
+        y1x = y;
+    }
+    else if(y1x > y2 && abs(y2-y1x) > 10) {
+        rot[0] += 0.1f * dt;
+        x1 = x;
+        y1x = y;
+    }
+}
 
 
 GLfloat frontFace[] = {
@@ -442,6 +475,7 @@ void render() {
 		renderGameOver();
 		break;
 	}
+
 	glPopMatrix();
 	MX_i::SwapBuffers();
 }

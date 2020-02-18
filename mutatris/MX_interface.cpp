@@ -83,6 +83,7 @@ namespace MX_i {
         SDL_Window *window;
         SDL_TimerID timer_id;
         bool Buttons[0xFF];
+        int cursor_x, cursory, cursor;
     
 		void (*update_cb)();
 		void (*idle_cb)();
@@ -275,8 +276,21 @@ namespace MX_i {
 							break;
 						}
 						break;
-
-					}
+                    case SDL_MOUSEMOTION:
+                            cursor_x = e.motion.x;
+                            cursory = e.motion.y;
+                            cursor = e.motion.state;
+                             if(cursor == 1)
+                                mouseUp(e.motion.x, e.motion.y, e.motion.state);
+                            break;
+                    case SDL_MOUSEBUTTONDOWN:
+                             mouseDown(e.button.x, e.button.y, e.button.state);
+                            break;
+                    case SDL_MOUSEBUTTONUP:
+                            //mouseUp(e.button.x, e.button.y, e.button.state);
+                            break;
+                    }
+					
 				}
 				idle_cb();
 			}
