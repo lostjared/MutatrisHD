@@ -129,7 +129,14 @@ namespace MX_i {
 		}
     
         void toggleFullScreen() {
-            SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+            static int offset = 0;
+            if(offset == 0) {
+                SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+                offset = 1;
+            } else {
+                offset = 0;
+                SDL_SetWindowFullscreen(window, 0);
+            }
         }
 
 		bool done;
@@ -231,9 +238,11 @@ namespace MX_i {
 						case SDLK_e:
 							Buttons[B_6] = true;
 							break;
+                            case SDLK_f:
+                                toggleFullScreen();
+                                break;
 						default:
 							break;
-
 						}
 						break;
 						case SDL_KEYUP:
