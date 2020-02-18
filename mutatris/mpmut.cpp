@@ -144,7 +144,7 @@ namespace mp
         int i = 0;
         bool go = true;
         for(i=0; i < 4; i++) {
-            int new_z = current.z+current.blocks[i].z;
+            int new_z = current.z-current.blocks[i].z;
             new_z = !new_z;
             if(grid.data[current.x+current.blocks[i].x][current.y+current.blocks[i].y][new_z] != 0) {
                 go = false;
@@ -162,7 +162,7 @@ namespace mp
         int i = 0;
         bool go = true;
         for(i=0; i < 4; i++) {
-            int new_z = current.z-current.blocks[i].z;
+            int new_z = current.z+current.blocks[i].z;
             new_z = !new_z;
             if(grid.data[current.x+current.blocks[i].x][current.y+current.blocks[i].y][new_z] != 0) {
                 go = false;

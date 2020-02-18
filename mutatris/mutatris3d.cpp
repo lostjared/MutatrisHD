@@ -264,9 +264,9 @@ void movementDown(int x, int y, int state) {
 }
 
 void movementScroll(int y) {
-    if(y > 0) {
+    if(y < 0) {
         mutatris.moveInward();
-    } else if(y < 0) {
+    } else if(y > 0) {
         mutatris.moveOutward();
     }
 }
