@@ -127,6 +127,10 @@ namespace MX_i {
             
            // SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
 		}
+    
+        void toggleFullScreen() {
+            SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+        }
 
 		bool done;
 

@@ -615,7 +615,7 @@ int main(int argc, char **argv) {
     int cx = 0;
     int cy = 0;
     
-    if(argc == 3) {
+    if(argc == 3 || argc == 4) {
         cx = atoi(argv[1]);
         cy = atoi(argv[2]);
         
@@ -630,10 +630,11 @@ int main(int argc, char **argv) {
     }
     
 	MX_i::Init(&argc, argv, cx, cy);
-
-  
 	MX_i::SetCallbacks(render, idle, resize);
 	init();
+    if(argc == 4 && std::string(argv[3]) =="-f") {
+        MX_i::toggleFullScreen();
+    }
 	MX_i::Loop();
 	clean();
 	MX_i::Quit();
