@@ -300,17 +300,17 @@ void renderGame() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	// draw in 2D
+    glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, background_texture);
-    
     cv::Mat frame;
     if(!cap.read(frame)) {
         cap.open("img/bg1.mp4");
         cap.read(frame);
     }
-    ac::MedianBlendMultiThreadByEight(frame);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, frame.cols, frame.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, frame.ptr());
-    
-	glDisable(GL_DEPTH_TEST);
+    cv::Mat out = frame.clone();
+    cv::flip(out, frame, 0);
+     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, frame.cols, frame.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, frame.ptr());
+    glDisable(GL_DEPTH_TEST);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glVertexPointer(3, GL_FLOAT, 0, frontFace);
@@ -438,9 +438,7 @@ void renderIntro() {
     }
     cv::Mat out = frame.clone();
     cv::flip(out, frame, 0);
-    
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, frame.cols, frame.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, frame.ptr());
-
     
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
