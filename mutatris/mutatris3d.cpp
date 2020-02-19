@@ -7,7 +7,7 @@
 #include"cmx_video.h"
 #include"cmx_font.h"
 #include"fixedsys.h"
-
+#include<acidcam/ac.h>
 #define WIDTH 1920
 #define HEIGHT 1080
 
@@ -20,6 +20,8 @@ GLuint background_texture;
 GLuint logo_texture;
 cmx::font::Font the_font;
 cmx::video::Surface score_surface;
+
+cv::VideoCapture start_cap, cap;
 
 namespace MX_i {
 
@@ -299,6 +301,15 @@ void renderGame() {
 	glLoadIdentity();
 	// draw in 2D
 	glBindTexture(GL_TEXTURE_2D, background_texture);
+    
+    cv::Mat frame;
+    if(!cap.read(frame)) {
+        cap.open("img/bg1.mp4");
+        cap.read(frame);
+    }
+    ac::MedianBlendMultiThreadByEight(frame);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, frame.cols, frame.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, frame.ptr());
+    
 	glDisable(GL_DEPTH_TEST);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -418,7 +429,19 @@ void renderIntro() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, logo_texture);
+
+    glBindTexture(GL_TEXTURE_2D, logo_texture);
+    cv::Mat frame;
+    if(!start_cap.read(frame)) {
+        start_cap.open("img/start_logo.mp4");
+        start_cap.read(frame);
+    }
+    cv::Mat out = frame.clone();
+    cv::flip(out, frame, 0);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, frame.cols, frame.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, frame.ptr());
+
+    
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glVertexPointer(3, GL_FLOAT, 0, frontFace);
@@ -493,6 +516,7 @@ void renderGameOver() {
 
 	if(MX_i::PollController(MX_i::B_1)) {
 		cur_screen = INTRO;
+        start_cap.open("img/start_logo.mp4");
 		intro_zPos = intro_yRot = 0;
 		mutatris.newGame();
 	}
@@ -627,6 +651,12 @@ int main(int argc, char **argv) {
     } else {
         cx = WIDTH;
         cy = HEIGHT;
+    }
+    cap.open("img/bg1.mp4");
+    start_cap.open("img/start_logo.mov");
+    if(!cap.isOpened()) {
+        std::cerr << "Could not load file...\n";
+        exit(EXIT_FAILURE);
     }
     
 	MX_i::Init(&argc, argv, cx, cy);

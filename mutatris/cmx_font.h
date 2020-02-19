@@ -2,8 +2,8 @@
 #define CMX_FONT_H__
 
 #define littleToBig(i) ((i&0xff)<<24)+((i&0xff00)<<8)+((i&0xff0000)>>8)+((i>>24)&0xff)
-#define GetFX(m,x,nw) ((float)x * (float)m->mx / (float)nw);
-#define GetFZ(m,y,nh) ((float)y * (float)m->my / (float)nh);
+#define GetFX_(m,x,nw) ((float)x * (float)m->mx / (float)nw);
+#define GetFZ_(m,y,nh) ((float)y * (float)m->my / (float)nh);
 
 #include"cmx_video.h"
 
@@ -72,8 +72,8 @@ namespace cmx {
 					  }
 					  for(i = 0; i < w; i++) {
 						   for(z = 0; z < h; z++) {
-							   int fX=(int)GetFX(fnt,i,w);
-							   int fY=(int)GetFZ(fnt,z,h);
+							   int fX=(int)GetFX_(fnt,i,w);
+							   int fY=(int)GetFZ_(fnt,z,h);
 							   int index = (int)src[p];
 							   if(fnt->letters[index].fnt_ptr[fX][fY] != fnt->tcolor) {
 								   buffer[(offset_x+i)+((offset_y+z)*buffer_width)] = color;

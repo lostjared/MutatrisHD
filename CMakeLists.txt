@@ -30,17 +30,18 @@ list(APPEND COMPILER_FLAGS "-Wall" "-pedantic" "-ansi")
 endif()
 
 
+find_package(OpenCV REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(SDL2 REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(Threads REQUIRED)
 
-include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR} ${OpenGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${SDL2_INCLUDE_DIRS})
-link_directories(/usr/local/lib)
+include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR} ${OpenCV_INCLUDE_DIRS} ${OpenGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${SDL2_INCLUDE_DIRS})
+link_directories(/usr/local/lib /usr/lib)
 
 add_executable(MutatrisHD ${CMAKE_SOURCE_DIR}/mutatris/MX_interface.cpp ${CMAKE_SOURCE_DIR}/mutatris/fixed.cpp ${CMAKE_SOURCE_DIR}/mutatris/font_source.cpp ${CMAKE_SOURCE_DIR}/mutatris/loadbmp.cpp ${CMAKE_SOURCE_DIR}/mutatris/mpmut.cpp
 ${CMAKE_SOURCE_DIR}/mutatris/mutatris3d.cpp ${CMAKE_SOURCE_DIR}/mutatris/video.cc ${CMAKE_SOURCE_DIR}/mutatris/types.cc)
-target_link_libraries(MutatrisHD ${OPENGL_gl_LIBRARY} ${GLEW_SHARED_LIBRARIES} Threads::Threads SDL2 ${GLEW_LIBARIES})
+target_link_libraries(MutatrisHD ${OPENGL_gl_LIBRARY} ${GLEW_SHARED_LIBRARIES} Threads::Threads SDL2 ${GLEW_LIBARIES} ${OpenCV_LIBS} acidcam)
 target_compile_options(MutatrisHD PRIVATE ${COMPILER_FLAGS})
 
