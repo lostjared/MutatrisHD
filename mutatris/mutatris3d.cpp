@@ -146,7 +146,7 @@ int current_filter = 0;
 
 
 unsigned int timer_callback(unsigned int t) {
-
+    
 	if(cur_screen != GAME) return t;
 
 	if(MX_i::PollController(MX_i::B_LEFT)) {
@@ -422,10 +422,6 @@ void renderIntro() {
     
    //glEnable (GL_BLEND);
    // glBlendFunc (GL_SRC_ALPHA, GL_SRC_ALPHA);
-  
-   
-    
-    
     glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glDisable(GL_DEPTH_TEST);
@@ -438,7 +434,7 @@ void renderIntro() {
     glBindTexture(GL_TEXTURE_2D, logo_texture);
     cv::Mat frame;
     if(!start_cap.read(frame)) {
-        start_cap.open("img/start_logo.mp4");
+        start_cap.open("img/start_logo.mov");
         start_cap.read(frame);
     }
     cv::Mat out = frame.clone();
@@ -519,7 +515,7 @@ void renderGameOver() {
 
 	if(MX_i::PollController(MX_i::B_1)) {
 		cur_screen = INTRO;
-        start_cap.open("img/start_logo.mp4");
+        start_cap.open("img/start_logo.mov");
 		intro_zPos = intro_yRot = 0;
 		mutatris.newGame();
 	}
