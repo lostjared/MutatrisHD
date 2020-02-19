@@ -139,10 +139,10 @@ GLfloat texCoords[] = {
 GLfloat rot[4] = {0,-10,0,0};//{ -25, -20, 0, 0};
 int width=WIDTH, height=HEIGHT;
 
-static std::vector<std::string> mirror_array{"MirrorLeft", "MirrorRight", "MirrorTopToBottom", "MirrorBottomToTop", "MirrorSwitch", "MirrorSwitchFlip", "MirrorLeftMirrorRightBlend", "MirrorTopMirrorBottomBlend", "MirrorAll", "MirrorLeftBottomToTop", "MirrorRightTopToBottom", "MirrorFadeLeftRight", "MirrorFadeUpDown", "MirrorFadeAll", "MirrorSwitchMode", "MirrorSwitchLeftRight", "MatrixCollectionFramesMirrorLeft", "MirrorDiamond", "MirrorDiamondRight", "MirrorDiamondReverse", "MirrorLeftTopToBottom", "MirrorRightBottomToTop", "MirrorFlipLeft", "MirrorFlipRight", "MirrorFlipBottomLeft", "MirrorFlipBottomRight", "MirrorFlipXMirrorLeft", "MirrorFlipXMirrorRight", "MirrorFlipYMirrorLeft", "MirrorFlipYMirrorRight", "MirrorFlipXLeftTopToBottom", "MirrorFlipXLeftBottomToTop", "MirrorFlipXRightTopToBottom", "MirrorFlipXRightBottomToTop", "MirrorFlipYLeftTopToBottom", "MirrorFlipYLeftBottomToTop", "MirrorFlipYRightTopToBottom", "MirrorFlipYRightBottomToTop"
+static std::vector<std::string> mirror_array{"MirrorLeft", "MirrorRight", "MirrorTopToBottom", "MirrorBottomToTop", "MirrorSwitch", "MirrorSwitchFlip", "MirrorLeftMirrorRightBlend", "MirrorTopMirrorBottomBlend", "MirrorAll", "MirrorLeftBottomToTop", "MirrorRightTopToBottom", "MirrorFadeLeftRight", "MirrorFadeUpDown", "MirrorFadeAll", "MirrorSwitchMode", "MirrorSwitchLeftRight", "MatrixCollectionFramesMirrorLeft", "MirrorDiamond", "MirrorDiamondRight", "MirrorDiamondReverse", "MirrorLeftTopToBottom", "MirrorRightBottomToTop", "MirrorFlipLeft", "MirrorFlipRight", "MirrorFlipBottomLeft", "MirrorFlipBottomRight", "MirrorFlipXMirrorLeft", "MirrorFlipXMirrorRight", "MirrorFlipYMirrorLeft", "MirrorFlipYMirrorRight", "MirrorFlipXLeftTopToBottom", "MirrorFlipXLeftBottomToTop", "MirrorFlipXRightTopToBottom", "MirrorFlipXRightBottomToTop", "MirrorFlipYLeftTopToBottom", "MirrorFlipYLeftBottomToTop", "MirrorFlipYRightTopToBottom","MirrorFlipYRightBottomToTop","MedianBlendMultiThread","SelfAlphaBlend","MedianBlendMultiThreadByEight","DarkColorFibonacci"
 };
 
-int current_filter = ac::filter_map[mirror_array[rand()%mirror_array.size()]];
+int current_filter = 0;
 
 
 unsigned int timer_callback(unsigned int t) {
@@ -641,6 +641,7 @@ int main(int argc, char **argv) {
   
     ac::init();
     srand(static_cast<int>(time(0)));
+    current_filter = ac::filter_map[mirror_array[rand()%mirror_array.size()]];
     int cx = 0;
     int cy = 0;
     
