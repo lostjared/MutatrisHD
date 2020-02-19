@@ -139,6 +139,11 @@ GLfloat texCoords[] = {
 GLfloat rot[4] = {0,-10,0,0};//{ -25, -20, 0, 0};
 int width=WIDTH, height=HEIGHT;
 
+static std::vector<std::string> mirror_array{"MirrorLeft", "MirrorRight", "MirrorTopToBottom", "MirrorBottomToTop", "MirrorSwitch", "MirrorSwitchFlip", "MirrorLeftMirrorRightBlend", "MirrorTopMirrorBottomBlend", "MirrorAll", "MirrorLeftBottomToTop", "MirrorRightTopToBottom", "MirrorFadeLeftRight", "MirrorFadeUpDown", "MirrorFadeAll", "MirrorSwitchMode", "MirrorSwitchLeftRight", "MatrixCollectionFramesMirrorLeft", "MirrorDiamond", "MirrorDiamondRight", "MirrorDiamondReverse", "MirrorLeftTopToBottom", "MirrorRightBottomToTop", "MirrorFlipLeft", "MirrorFlipRight", "MirrorFlipBottomLeft", "MirrorFlipBottomRight", "MirrorFlipXMirrorLeft", "MirrorFlipXMirrorRight", "MirrorFlipYMirrorLeft", "MirrorFlipYMirrorRight", "MirrorFlipXLeftTopToBottom", "MirrorFlipXLeftBottomToTop", "MirrorFlipXRightTopToBottom", "MirrorFlipXRightBottomToTop", "MirrorFlipYLeftTopToBottom", "MirrorFlipYLeftBottomToTop", "MirrorFlipYRightTopToBottom", "MirrorFlipYRightBottomToTop"
+};
+
+int current_filter = ac::filter_map[mirror_array[rand()%mirror_array.size()]];
+
 
 unsigned int timer_callback(unsigned int t) {
 
@@ -231,6 +236,7 @@ void mouseUp(int x, int y, int state) {
         x1 = x;
         y1x = y;
     }
+    current_filter = ac::filter_map[mirror_array[rand()%mirror_array.size()]];
 }
 
 void movementUp(int x, int y, int state) {
@@ -258,6 +264,7 @@ void movementUp(int x, int y, int state) {
         x1 = x;
         y1x = y;
     }
+    current_filter = ac::filter_map[mirror_array[rand()%mirror_array.size()]];
 }
 
 void movementDown(int x, int y, int state) {
@@ -309,6 +316,7 @@ void renderGame() {
     }
     cv::Mat out = frame.clone();
     cv::flip(out, frame, 0);
+    ac::CallFilter(current_filter, frame);
     glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, frame.cols, frame.rows, GL_BGR, GL_UNSIGNED_BYTE, frame.ptr());
      
     glDisable(GL_DEPTH_TEST);
@@ -335,13 +343,8 @@ void renderGame() {
     glRotatef(rot[0], 1.0f, 0.0f, 0.0f);
     glRotatef(rot[1], 0.0f, 1.0f, 0.0f);
     glRotatef(rot[2], 0.0f, 0.0f, 1.0f);
-
     glPushMatrix();
- 
     glDisable (GL_BLEND);
-    
-    
-    
 	 for(i = 0; i < mutatris.GRID_W; i++) {
 		  for(z = 0; z < mutatris.GRID_H; z++) {
 			  for(d = 0; d < mutatris.GRID_Z; d++) {
@@ -375,8 +378,6 @@ void renderGame() {
 		  }
 	 }
 	 glPopMatrix();
-   
-    
 	 for(int q = 0; q < 4; q++) {
 		 int xPos = mutatris.current.x+mutatris.current.blocks[q].x;
 		 int yPos = mutatris.current.y+mutatris.current.blocks[q].y;
@@ -634,6 +635,8 @@ int main(int argc, char **argv) {
 	path += "/../Resources";
 	std::cout << temp_path << "\n";
 	chdir(path.c_str()); */
+  
+    ac::init();
     
     int cx = 0;
     int cy = 0;
