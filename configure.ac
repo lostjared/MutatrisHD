@@ -90,7 +90,7 @@ LIBSDL_RPATH="$LIBSDL_RPATH $args"
 esac
 done
 LIBSDL_RPATH=`echo $LIBSDL_RPATH | sed -e "s/-L/-R/g"`
-LIBSDL_CFLAGS="`$LIBSDL_CONFIG --cflags`"
+LIBSDL_CFLAGS="`$LIBSDL_CONFIG --cflags` `pkg-config opencv4 acidcam --cflags`"
 
 AC_DEFINE_UNQUOTED(HAVE_LIBSDL, 1, [Defines if your system has the LIBSDL library])
 fi
@@ -104,7 +104,7 @@ fi
 
 export PKG_CONFIG_PATH="${LDPREFIX}/lib/pkgconfig:$PKG_CONFIG_PATH"
 
-LIBGLEW_GLEWLIB="`pkg-config glew --libs`"
+LIBGLEW_GLEWLIB="`pkg-config opencv4 acidcam  glew --libs`"
 
 # Checks for header files.
 AC_CHECK_HEADERS([fcntl.h inttypes.h limits.h stddef.h stdint.h string.h strings.h sys/time.h unistd.h])
