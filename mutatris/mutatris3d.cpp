@@ -150,21 +150,24 @@ unsigned int timer_callback(unsigned int t) {
 	if(cur_screen != GAME) return t;
 
 	if(MX_i::PollController(MX_i::B_LEFT)) {
+        current_filter = ac::filter_map[mirror_array[rand()%mirror_array.size()]];
 		mutatris.moveLeft();
 	}
 	else if(MX_i::PollController(MX_i::B_RIGHT)) {
+        current_filter = ac::filter_map[mirror_array[rand()%mirror_array.size()]];
 		mutatris.moveRight();
 	}
 	else if(MX_i::PollController(MX_i::B_UP)) {
+        current_filter = ac::filter_map[mirror_array[rand()%mirror_array.size()]];
 		mutatris.moveInward();
 
 	} else if(MX_i::PollController(MX_i::B_DOWN)) {
+        current_filter = ac::filter_map[mirror_array[rand()%mirror_array.size()]];
 			mutatris.moveDown();
 	} else if(MX_i::PollController(MX_i::B_1)) mutatris.shiftColor();
 
 	static int counter = 0;
-
-
+    
 	mutatris.grid.update();
 
 	if ((++counter%4) == 0)
@@ -637,7 +640,7 @@ int main(int argc, char **argv) {
 	chdir(path.c_str()); */
   
     ac::init();
-    
+    srand(static_cast<int>(time(0)));
     int cx = 0;
     int cy = 0;
     
