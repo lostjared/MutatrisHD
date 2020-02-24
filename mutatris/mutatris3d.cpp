@@ -199,7 +199,7 @@ void idle() {
     dt = passed;
     
     
-	if(MX_i::PollController(MX_i::B_2)) rot[0] += 0.1 * dt;
+	if(MX_i::PollController(MX_i::B_2)) rot[0] += 0.1f * dt;
 	else if(MX_i::PollController(MX_i::B_3)) rot[0] -= 0.1f * dt;
 	else if(MX_i::PollController(MX_i::B_4)) rot[1] += 0.1f * dt;
 	else if(MX_i::PollController(MX_i::B_5)) rot[1] -= 0.1f * dt;
@@ -461,12 +461,12 @@ void renderIntro() {
 
 	if(intro_zPos < -10) {
 		glRotatef(intro_yRot, 0, 1, 0);
-		intro_yRot += 0.1f * dt;
+		intro_yRot += 0.07f * dt;
 		if(intro_yRot > 360) {
 			cur_screen = GAME;
 		} else if(intro_yRot > 180) {
 			static float xRot = 0.0f;
-			xRot += 0.1f * dt;
+			xRot += 0.07f * dt;
 			glRotatef(xRot, 1, 0, 0);
 		}
 	} else intro_zPos -= 0.01f * dt;
