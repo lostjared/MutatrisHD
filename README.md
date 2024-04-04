@@ -9,63 +9,44 @@ after you run autogen.sh like this
 ./autogen.sh && ./configure && make
 
 
-To use ./configure
+To use 
+```bash
+./configure
+```
+
 should detect sdl2-config if it does not
+
+```bash
 ./configure --prefix=/path
+```
+
 path being where sdl2-config is
 
 then just
-
+```bash
 make
-
-How to Play
-Line up rows of blocks in horizontal, vertical, or a cube of the same type. The twist
-is When a block is not supported (no block beneath it) it moves down until there is a block
-below or the bottom of the grid. It may be tricky to figure out the controls at first, but
-you have to rotate the grid x and y axis.
-
-Watch video on how to compile: https://youtu.be/6pfXzNvGXVo
+```
 
 
-Controls:
+Playing Instructions:
+
+Align blocks in rows either horizontally, vertically, or into a cube of identical types. The unique aspect is that if a block lacks support (no block underneath), it descends until it encounters another block or reaches the grid's base. Mastering the controls might initially seem challenging, as it requires rotating the grid along the x and y axes.
+
+Game Controls:
+
+- Left Arrow: Move left
+- Right Arrow: Move right
+- Down Arrow: Move down
+- Up Arrow: Advance inwardly, depth-wise
+- 'a' Key: Shift blocks
+- 'e' Key: Reset rotation to default
+- 's' Key: Rotate around the +x axis
+- 'd' Key: Rotate around the -x axis
+- 'z' Key: Rotate around the +y axis
+- 'x' Key: Rotate around the -y axis
+- Escape Key: Exit the game at any time
 
 
-Left Arrow - move left 
-
-
-Right Arrow - move right 
-
-
-Down Arrow - move down 
-
-
-Up Arrow - move inwards depth wise 
-
-
-'a' key - to shift blocks
-
-
-'e' key - to restore rotation to home
-
-
-'s' key: rotate +x axis
-
-
-'d' key: rotate -x axis
-
-
-'z' key: rotate +y axis
-
-
-'x' key: rotate -y axis
-
-
-Escape key to quit any time
-
-
-Written in C++ using OpenGL.
-
-
-
+Developed in C++ and utilizes OpenGL for rendering.
 
 
